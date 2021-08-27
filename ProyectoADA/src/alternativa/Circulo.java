@@ -1,6 +1,5 @@
 package alternativa;
 
-import objetos.*;
 import java.awt.*;
 import java.io.Serializable;
 
