@@ -4,7 +4,7 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Circulo implements Serializable {
-
+    
     private Point coordenada;
     private Color color;
     private int diametro;
@@ -12,7 +12,6 @@ public class Circulo implements Serializable {
     private Font fuente;
     private int izquierda;
     private int grosorBorde;
-
     /**
      * Metodo Constructor para un Objeto Circulo
      *
@@ -21,7 +20,7 @@ public class Circulo implements Serializable {
     public Circulo(Point coordenada,String etiqueta) {
         this.coordenada = coordenada;
         color = Color.blue;
-        diametro = 30;
+        diametro = 25;
         this.etiqueta=etiqueta;
         fuente = new Font("TimesRoman", Font.BOLD, 20);
         izquierda = 0;
@@ -41,7 +40,7 @@ public class Circulo implements Serializable {
                 if (fuente != null) {
                     g.setFont(fuente);
                 }
-                ((Graphics2D) g).drawString(etiqueta, coordenada.x+5 - (izquierda), coordenada.y);
+                ((Graphics2D) g).drawString(etiqueta, coordenada.x+5 - (izquierda), coordenada.y-5);
                 ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             }
         }
@@ -59,7 +58,7 @@ public class Circulo implements Serializable {
                 if (fuente != null) {
                     g.setFont(fuente);
                 }
-                ((Graphics2D) g).drawString(etiqueta, coordenada.x-10 - (izquierda), coordenada.y-10);
+               ((Graphics2D) g).drawString(etiqueta, coordenada.x+5 - (izquierda), coordenada.y-5);
                 ((Graphics2D) g).setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
             }
         }

@@ -37,8 +37,8 @@ public class Arista implements Serializable {
         int yMenor = menor(origen.y, fin.y);
         int xMayor = mayor(origen.x, fin.x);
         int yMayor = mayor(origen.y, fin.y);
-        int distanciaVertical = yMayor - yMenor-10;
-        int distanciaHorizontal = xMayor - xMenor+10;
+        int distanciaVertical = yMayor - yMenor-4;
+        int distanciaHorizontal = xMayor - xMenor+40;
         ((Graphics2D) g).drawString(valor + "", (distanciaHorizontal / 2) + xMenor, (distanciaVertical / 2) + yMenor);
     }
 

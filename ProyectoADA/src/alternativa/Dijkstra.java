@@ -122,11 +122,3 @@ public class Dijkstra {
     }
 }
 
-class Resultado{
-    int caminoMinimo;
-    ArrayList<Integer> caminoRecuperado;
-    public Resultado(int caminoMinimo, ArrayList<Integer> caminoRecuperado) {
-        this.caminoMinimo = caminoMinimo;
-        this.caminoRecuperado = caminoRecuperado;
-    }  
-}

@@ -8,7 +8,7 @@ import java.util.TreeMap;
 
 public class Grafo {
 
-    HashMap<Nodo, HashMap<Nodo, Arista>> mapa;
+    public HashMap<Nodo, HashMap<Nodo, Arista>> mapa;
     int cantidadNodos = 0;
 
     public Grafo(HashMap<Nodo, HashMap<Nodo, Arista>> grafo) {
