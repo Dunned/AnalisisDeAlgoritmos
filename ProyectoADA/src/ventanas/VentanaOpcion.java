@@ -11,6 +11,7 @@ import alternativa.Dijkstra;
 import alternativa.Grafo;
 import alternativa.Nodo;
 import alternativa.Resultado;
+import alternativa.Usuario;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -25,14 +26,15 @@ import javax.swing.JPanel;
  * @author Eduar
  */
 public class VentanaOpcion extends javax.swing.JFrame {
-
+    Usuario usuario;
     Grafo grafo = new Grafo();
     Nodo nodoInicio = null;
     Nodo nodoFin = null;
     ArrayList<Arista> caminoRecorrido;
     Desface desplace;
 
-    public VentanaOpcion() {
+    public VentanaOpcion(Usuario usuario) {
+        this.usuario=usuario;
         initComponents();
         desplace = new Desface();
         this.setResizable(false);
@@ -76,6 +78,9 @@ public class VentanaOpcion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Mapa2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         menuPlegable = new javax.swing.JPanel();
         fondoBotonMenu = new javax.swing.JPanel();
         botonMenu = new javax.swing.JLabel();
@@ -92,6 +97,20 @@ public class VentanaOpcion extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         Mapa1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+
+        Mapa2.setBackground(new java.awt.Color(204, 255, 51));
+        Mapa2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        Mapa2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Mapa2MouseClicked(evt);
+            }
+        });
+        Mapa2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Mapa2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 740));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel3.setText("ddddd");
+        Mapa2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 250, 30));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -495,6 +514,10 @@ public class VentanaOpcion extends javax.swing.JFrame {
         fondoBotonMapaZ.setBackground(new Color(30,36,37));
     }//GEN-LAST:event_botonMapaZMouseExited
 
+    private void Mapa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mapa2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Mapa2MouseClicked
+
     private void dibujarGrafo() {
         Mapa1.paint(Mapa1.getGraphics());
         dibujarAristas();
@@ -571,13 +594,14 @@ public class VentanaOpcion extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaOpcion().setVisible(true);
+                //new VentanaOpcion().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Mapa1;
+    private javax.swing.JPanel Mapa2;
     private javax.swing.JLabel botonFavoritos;
     private javax.swing.JLabel botonMapaX;
     private javax.swing.JLabel botonMapaY;
@@ -591,6 +615,8 @@ public class VentanaOpcion extends javax.swing.JFrame {
     private javax.swing.JPanel fondoBotonMenu;
     private javax.swing.JPanel fondoBotonPerfil;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel menuPlegable;
     // End of variables declaration//GEN-END:variables

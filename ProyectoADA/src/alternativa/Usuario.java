@@ -1,18 +1,20 @@
 package alternativa;
 
+import java.awt.Image;
 import java.io.File;
+import java.io.Serializable;
 
 
 
-public class Usuario {
-    private int dni;
-    private int numeroCelular;
+public class Usuario implements Serializable {
+    private String dni;
+    private String numeroCelular;
     private String nombre;
     private String apellido;
     private String contraseña;
-    private File foto;
+    private Image foto;
 
-    public Usuario(int dni, int numeroCelular, String nombre, String apellido, String contraseña, File foto) {
+    public Usuario(String dni, String numeroCelular, String nombre, String apellido, String contraseña, Image foto) {
         this.dni = dni;
         this.numeroCelular = numeroCelular;
         this.nombre = nombre;
@@ -21,11 +23,11 @@ public class Usuario {
         this.foto = foto;
     }
 
-    public int getDni() {
+    public String getDni() {
         return dni;
     }
 
-    public int getNumeroCelular() {
+    public String getNumeroCelular() {
         return numeroCelular;
     }
 
@@ -41,17 +43,33 @@ public class Usuario {
         return contraseña;
     }
 
-    public File getFoto() {
+    public Image getFoto() {
         return foto;
     }
-    
-    
-    
-    
-    
-    
-    
 
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public void setNumeroCelular(String numeroCelular) {
+        this.numeroCelular = numeroCelular;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public void setFoto(Image foto) {
+        this.foto = foto;
+    }
     
     
 }

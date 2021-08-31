@@ -1,8 +1,10 @@
-
 package ventanas;
 
+import Informacion.Archivo;
+import Informacion.Encadenador;
 import java.awt.Color;
-
+import java.io.File;
+import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
 
@@ -16,15 +18,14 @@ public class Login extends javax.swing.JFrame {
         this.setResizable(false);
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        entradaDNI = new javax.swing.JTextField();
+        entradaContraseña = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -49,20 +50,20 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("USUARIO (DNI)");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
-        jTextField1.setBackground(new java.awt.Color(255, 87, 51));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
-        jTextField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        entradaDNI.setBackground(new java.awt.Color(255, 87, 51));
+        entradaDNI.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        entradaDNI.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        entradaDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                entradaDNIActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 280, 30));
+        jPanel2.add(entradaDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, 280, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(255, 87, 51));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 280, 30));
+        entradaContraseña.setBackground(new java.awt.Color(255, 87, 51));
+        entradaContraseña.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
+        entradaContraseña.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.add(entradaContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 280, 30));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Emoji", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -149,16 +150,16 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void entradaDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaDNIActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_entradaDNIActionPerformed
 
     private void panelSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSalirMouseEntered
         panelSalir.setBackground(new Color(255, 87, 51));
     }//GEN-LAST:event_panelSalirMouseEntered
 
     private void panelSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSalirMouseExited
-        panelSalir.setBackground(new Color(81,29,71));
+        panelSalir.setBackground(new Color(81, 29, 71));
     }//GEN-LAST:event_panelSalirMouseExited
 
     private void panelSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelSalirMouseClicked
@@ -166,28 +167,52 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_panelSalirMouseClicked
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        
+        try {
+            File binario = new File("Usuarios.bin");
+            if (binario.exists()) {
+                String dni = entradaDNI.getText();
+                String contraseña = entradaContraseña.getText();
+                Archivo archivo = new Archivo();
+                archivo.recuperarTabla();
+                Encadenador encadenador = archivo.getTablaHash().buscarEncadenamiento(dni);
+                if (encadenador == null) {
+                    JOptionPane.showMessageDialog(this, "NO EXISTE UN USUARIO CON EL DNI " + dni);
+                } else {
+                    if (encadenador.contenido.getContraseña().equals(contraseña)) {
+                        VentanaOpcion ventanaOpcion=new VentanaOpcion(encadenador.contenido);
+                        this.dispose();
+                        ventanaOpcion.setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "CONTRASEÑA INCORRECTA PARA EL DNI: " + dni);
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "NO EXISTE UN USUARIO CON EL DNI " + entradaDNI.getText());
+            }
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(this, "RELLENE CORRECTAMENTE LOS CAMPOS ");
+        }
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void botonIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarMouseEntered
-        botonIngresar.setBackground(new Color(81,29,71));
+        botonIngresar.setBackground(new Color(81, 29, 71));
     }//GEN-LAST:event_botonIngresarMouseEntered
 
     private void botonIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarMouseExited
-        botonIngresar.setBackground(new Color(204,255,153));
+        botonIngresar.setBackground(new Color(204, 255, 153));
     }//GEN-LAST:event_botonIngresarMouseExited
 
     private void botonRegistrarseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseEntered
-        botonRegistrarse.setBackground(new Color(81,29,71));
+        botonRegistrarse.setBackground(new Color(81, 29, 71));
     }//GEN-LAST:event_botonRegistrarseMouseEntered
 
     private void botonRegistrarseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarseMouseExited
-        botonRegistrarse.setBackground(new Color(204,255,153));
+        botonRegistrarse.setBackground(new Color(204, 255, 153));
     }//GEN-LAST:event_botonRegistrarseMouseExited
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
-       Registro registro=new Registro(this,true); //JDIALOG REGISTRO
-       registro.setVisible(true);
+        Registro registro = new Registro(this, true); //JDIALOG REGISTRO
+        registro.setVisible(true);
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
     /**
@@ -228,6 +253,8 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonIngresar;
     private javax.swing.JButton botonRegistrarse;
+    private javax.swing.JPasswordField entradaContraseña;
+    private javax.swing.JTextField entradaDNI;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -238,8 +265,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel panelSalir;
     // End of variables declaration//GEN-END:variables
 }

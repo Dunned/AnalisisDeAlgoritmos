@@ -5,14 +5,19 @@
  */
 package ventanas;
 
+import Informacion.Archivo;
 import alternativa.Usuario;
 import java.awt.Color;
+import java.awt.Image;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -21,6 +26,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Registro extends javax.swing.JDialog {
 
     Usuario usuario;
+    Image imagen;
 
     public Registro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -56,7 +62,7 @@ public class Registro extends javax.swing.JDialog {
         botonCargar = new javax.swing.JButton();
         botonRegistro = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
-        foto = new javax.swing.JLabel();
+        etiquetaFoto = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -152,9 +158,9 @@ public class Registro extends javax.swing.JDialog {
         });
         jPanel1.add(botonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 110, 20));
 
-        foto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fotoDefecto.png"))); // NOI18N
-        foto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
-        jPanel1.add(foto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 120, 120));
+        etiquetaFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fotoDefecto.png"))); // NOI18N
+        etiquetaFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        jPanel1.add(etiquetaFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, 120, 120));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registro.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 550));
@@ -174,12 +180,16 @@ public class Registro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarActionPerformed
+        String ruta = "";
         JFileChooser fc = new JFileChooser();
-        fc.setDialogTitle("BUSCA TU FOTOGRAFIA PERSONAL!!");
-        if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            File photo = new File(fc.getSelectedFile().toString());
-            photo.getAbsoluteFile();
-            rsscalelabel.RSScaleLabel.setScaleLabel(foto, fc.getSelectedFile().toString());
+        FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");
+        fc.setFileFilter(filtrado);
+        int respuesta = fc.showOpenDialog(this);
+        if (respuesta == JFileChooser.APPROVE_OPTION) {
+            ruta = fc.getSelectedFile().getPath();
+            imagen = new ImageIcon(ruta).getImage();
+            ImageIcon iconoUsuario = new ImageIcon(imagen.getScaledInstance(etiquetaFoto.getWidth(), etiquetaFoto.getHeight(), Image.SCALE_SMOOTH));
+            etiquetaFoto.setIcon(iconoUsuario);
         }
     }//GEN-LAST:event_botonCargarActionPerformed
 
@@ -212,19 +222,71 @@ public class Registro extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegistroMouseExited
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
-        String dni = entradaDNI.getText();
-        String numeroCelular = entradaNumero.getText();
-        String nombre = entradaNombre.getText();
-        String apellido = entradaApellido.getText();
-        String contraseña;
-        File foto;
+        if (validarDNI() && validarNumero() && validarContraseña() && validarNombreApellido() && validarFoto()) {
+            String dni = entradaDNI.getText();
+            String numeroCelular = entradaNumero.getText();
+            String nombre = entradaNombre.getText();
+            String apellido = entradaApellido.getText();
+            String contraseña = entradaContraseña1.getText();
+            usuario = new Usuario(dni, numeroCelular, nombre, apellido, contraseña, imagen);
+            Archivo archivo = new Archivo();
+            int op = archivo.crearUsuario(usuario);
+            if (op == 1) {
+                JOptionPane.showMessageDialog(this, "REGISTRO CORRECTO GRACIAS : " + usuario.getNombre() + " " + usuario.getApellido());
+                this.dispose();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(this, "REVISE LOS CAMPOS");
+        }
     }//GEN-LAST:event_botonRegistroActionPerformed
 
-    private void validarContraseña() {
-        String valorPass = new String(entradaContraseña1.getText());
+    private boolean validarDNI() {
+        boolean valido = false;
+        int tamanio = entradaDNI.getText().length();
+        if (tamanio == 8) {
+            valido = true;
+        }
+        try {
+            int dniNumero = Integer.parseInt(entradaDNI.getText());
+        } catch (Exception e) {
+            return false;
+        }
+        return valido;
+    }
 
-//Si imprimes ahora valorPass, te devolvera el valor real que se ha
-// ingresado dentro del txtPasswordFiel
+    private boolean validarNumero() {
+        boolean valido = false;
+        int tamanio = entradaNumero.getText().length();
+        if (tamanio == 9) {
+            valido = true;
+        }
+        try {
+            int dniNumero = Integer.parseInt(entradaNumero.getText());
+        } catch (Exception e) {
+            return false;
+        }
+        return valido;
+    }
+
+    private boolean validarNombreApellido() {
+        String nombre = entradaNombre.getText();
+        String apellido = entradaApellido.getText();
+        return !(nombre.isEmpty() || apellido.isEmpty());
+    }
+
+    private boolean validarContraseña() {
+        String valorPass = entradaContraseña1.getText();
+        String valorPass2 = entradaContraseña2.getText();
+        System.out.println(valorPass);
+        return valorPass.equals(valorPass2);
+    }
+
+    private boolean validarFoto() {
+        if (imagen == null) {
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -284,7 +346,7 @@ public class Registro extends javax.swing.JDialog {
     private javax.swing.JTextField entradaDNI;
     private javax.swing.JTextField entradaNombre;
     private javax.swing.JTextField entradaNumero;
-    private javax.swing.JLabel foto;
+    private javax.swing.JLabel etiquetaFoto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
