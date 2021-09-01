@@ -4,23 +4,22 @@ import java.awt.Image;
 import java.io.File;
 import java.io.Serializable;
 
-
-
 public class Usuario implements Serializable {
+
     private String dni;
     private String numeroCelular;
     private String nombre;
     private String apellido;
     private String contraseña;
-    private Image foto;
+    private String rutaFoto;
 
-    public Usuario(String dni, String numeroCelular, String nombre, String apellido, String contraseña, Image foto) {
+    public Usuario(String dni, String numeroCelular, String nombre, String apellido, String contraseña, String ruta) {
         this.dni = dni;
         this.numeroCelular = numeroCelular;
         this.nombre = nombre;
         this.apellido = apellido;
         this.contraseña = contraseña;
-        this.foto = foto;
+        this.rutaFoto = ruta;
     }
 
     public String getDni() {
@@ -43,8 +42,8 @@ public class Usuario implements Serializable {
         return contraseña;
     }
 
-    public Image getFoto() {
-        return foto;
+    public String getFoto() {
+        return rutaFoto;
     }
 
     public void setDni(String dni) {
@@ -67,9 +66,8 @@ public class Usuario implements Serializable {
         this.contraseña = contraseña;
     }
 
-    public void setFoto(Image foto) {
-        this.foto = foto;
+    public void setFoto(String ruta) {
+        this.rutaFoto = ruta;
     }
-    
-    
+
 }

@@ -167,7 +167,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_panelSalirMouseClicked
 
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        try {
+        
             File binario = new File("Usuarios.bin");
             if (binario.exists()) {
                 String dni = entradaDNI.getText();
@@ -180,8 +180,8 @@ public class Login extends javax.swing.JFrame {
                 } else {
                     if (encadenador.contenido.getContraseña().equals(contraseña)) {
                         VentanaOpcion ventanaOpcion=new VentanaOpcion(encadenador.contenido);
-                        this.dispose();
                         ventanaOpcion.setVisible(true);
+                        this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(this, "CONTRASEÑA INCORRECTA PARA EL DNI: " + dni);
                     }
@@ -189,9 +189,7 @@ public class Login extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "NO EXISTE UN USUARIO CON EL DNI " + entradaDNI.getText());
             }
-        } catch (Exception e) {
-             JOptionPane.showMessageDialog(this, "RELLENE CORRECTAMENTE LOS CAMPOS ");
-        }
+        
     }//GEN-LAST:event_botonIngresarActionPerformed
 
     private void botonIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonIngresarMouseEntered

@@ -25,8 +25,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class Registro extends javax.swing.JDialog {
 
+    String ruta = "";
     Usuario usuario;
-    Image imagen;
 
     public Registro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -40,7 +40,6 @@ public class Registro extends javax.swing.JDialog {
         entradaContraseña2.setBackground(new java.awt.Color(0, 0, 0, 1));
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-
     }
 
     /**
@@ -180,16 +179,18 @@ public class Registro extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCargarActionPerformed
-        String ruta = "";
+        ruta = "";
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filtrado = new FileNameExtensionFilter("JPG, PNG & GIF", "jpg", "png", "gif");
         fc.setFileFilter(filtrado);
         int respuesta = fc.showOpenDialog(this);
         if (respuesta == JFileChooser.APPROVE_OPTION) {
-            ruta = fc.getSelectedFile().getPath();
-            imagen = new ImageIcon(ruta).getImage();
+            ruta = new String(fc.getSelectedFile().getPath());
+            System.out.println("INICIANDO: " + ruta);
+            Image imagen = new ImageIcon(ruta).getImage();
             ImageIcon iconoUsuario = new ImageIcon(imagen.getScaledInstance(etiquetaFoto.getWidth(), etiquetaFoto.getHeight(), Image.SCALE_SMOOTH));
             etiquetaFoto.setIcon(iconoUsuario);
+            System.out.println("EMPEZANDO: " + ruta);
         }
     }//GEN-LAST:event_botonCargarActionPerformed
 
@@ -222,13 +223,16 @@ public class Registro extends javax.swing.JDialog {
     }//GEN-LAST:event_botonRegistroMouseExited
 
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
+
         if (validarDNI() && validarNumero() && validarContraseña() && validarNombreApellido() && validarFoto()) {
+           
             String dni = entradaDNI.getText();
             String numeroCelular = entradaNumero.getText();
             String nombre = entradaNombre.getText();
             String apellido = entradaApellido.getText();
             String contraseña = entradaContraseña1.getText();
-            usuario = new Usuario(dni, numeroCelular, nombre, apellido, contraseña, imagen);
+            usuario = new Usuario(dni, numeroCelular, nombre, apellido, contraseña, ruta);
+
             Archivo archivo = new Archivo();
             int op = archivo.crearUsuario(usuario);
             if (op == 1) {
@@ -283,7 +287,7 @@ public class Registro extends javax.swing.JDialog {
     }
 
     private boolean validarFoto() {
-        if (imagen == null) {
+        if (ruta=="") {
             return false;
         }
         return true;

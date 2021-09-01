@@ -12,7 +12,7 @@ public class TablaHashEncadenamiento implements Serializable {
     public TablaHashEncadenamiento() {
         usuarios = new Encadenador[TAM_TABLA]; // 0-97 
         for (int i = 0; i < TAM_TABLA; i++) {
-            Usuario usuario = new Usuario("", "", "", "", "", null);
+            Usuario usuario = new Usuario("", "", "", "", "", "");
             usuarios[i] = new Encadenador(usuario);
         }
     }
@@ -31,7 +31,7 @@ public class TablaHashEncadenamiento implements Serializable {
             this.usuarios[pos].contenido.setNombre(usuario.getNombre());
             this.usuarios[pos].contenido.setApellido(usuario.getApellido());
             this.usuarios[pos].contenido.setContraseña(usuario.getContraseña());
-            //this.usuarios[pos].contenido.setFoto(usuario.getFoto());
+            this.usuarios[pos].contenido.setFoto(usuario.getFoto());
         } else {
             Encadenador puntero = this.usuarios[pos];
             while (puntero.siguiente != null) {
