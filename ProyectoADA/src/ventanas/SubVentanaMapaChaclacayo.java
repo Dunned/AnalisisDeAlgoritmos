@@ -5,14 +5,14 @@
  */
 package ventanas;
 
-import alternativa.Arista;
-import alternativa.Convertidor;
-import alternativa.Dijkstra;
-import alternativa.Grafo;
-import alternativa.Nodo;
-import alternativa.PlantaOxigeno;
-import alternativa.Resultado;
-import alternativa.Usuario;
+import Codigo.Arista;
+import Codigo.Convertidor;
+import Codigo.Dijkstra;
+import Codigo.Grafo;
+import Codigo.Nodo;
+import Codigo.PlantaOxigeno;
+import Codigo.Resultado;
+import Codigo.Usuario;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;

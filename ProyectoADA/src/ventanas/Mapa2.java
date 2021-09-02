@@ -39,7 +39,6 @@ public class Mapa2 extends javax.swing.JPanel {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mapaA.jpg"))); // NOI18N
         labelMapa.setPreferredSize(new java.awt.Dimension(960, 720));
         jPanel2.add(labelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 720));
 

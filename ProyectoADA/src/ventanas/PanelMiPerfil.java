@@ -5,7 +5,7 @@
  */
 package ventanas;
 
-import alternativa.Usuario;
+import Codigo.Usuario;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;

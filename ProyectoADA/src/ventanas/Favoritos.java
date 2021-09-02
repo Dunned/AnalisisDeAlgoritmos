@@ -5,8 +5,8 @@
  */
 package ventanas;
 
-import alternativa.PlantaOxigeno;
-import alternativa.Usuario;
+import Codigo.PlantaOxigeno;
+import Codigo.Usuario;
 import java.awt.Image;
 import java.awt.TextArea;
 import javax.swing.Icon;

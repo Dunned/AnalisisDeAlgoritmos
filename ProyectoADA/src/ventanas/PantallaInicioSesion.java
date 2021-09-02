@@ -1,7 +1,7 @@
 package ventanas;
 
-import Informacion.Archivo;
-import Informacion.Encadenador;
+import ManejoDeArchivos.Archivo;
+import ManejoDeArchivos.Encadenador;
 import java.awt.Color;
 import java.io.File;
 import javax.swing.JOptionPane;
@@ -124,7 +124,7 @@ public class PantallaInicioSesion extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(0, 255, 153));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salida (2).png"))); // NOI18N
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoSalidaVentanaLogueo.png"))); // NOI18N
         panelSalir.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 50));
 
         jPanel2.add(panelSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 640, 70, 50));
@@ -138,8 +138,8 @@ public class PantallaInicioSesion extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/NYC.gif"))); // NOI18N
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-130, 0, 980, 720));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoIzquierdoPantallaLogueo.gif"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-110, 0, 1130, 720));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 710));
 

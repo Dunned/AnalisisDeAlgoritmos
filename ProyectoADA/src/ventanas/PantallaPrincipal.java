@@ -5,14 +5,14 @@
  */
 package ventanas;
 
-import Informacion.Archivo;
-import alternativa.Arista;
-import alternativa.Convertidor;
-import alternativa.Dijkstra;
-import alternativa.Grafo;
-import alternativa.Nodo;
-import alternativa.Resultado;
-import alternativa.Usuario;
+import ManejoDeArchivos.Archivo;
+import Codigo.Arista;
+import Codigo.Convertidor;
+import Codigo.Dijkstra;
+import Codigo.Grafo;
+import Codigo.Nodo;
+import Codigo.Resultado;
+import Codigo.Usuario;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -228,7 +228,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         botonMapaX.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 16)); // NOI18N
         botonMapaX.setForeground(new java.awt.Color(255, 203, 58));
         botonMapaX.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botonMapaX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/location (1).png"))); // NOI18N
+        botonMapaX.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoMapa1.png"))); // NOI18N
         botonMapaX.setText("MAPA X");
         botonMapaX.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
         botonMapaX.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -266,7 +266,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         botonMapaY.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 16)); // NOI18N
         botonMapaY.setForeground(new java.awt.Color(255, 203, 58));
         botonMapaY.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botonMapaY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/location (1).png"))); // NOI18N
+        botonMapaY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoMapa2.png"))); // NOI18N
         botonMapaY.setText("MAPA Y");
         botonMapaY.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
         botonMapaY.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -307,7 +307,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         botonMapaZ.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 16)); // NOI18N
         botonMapaZ.setForeground(new java.awt.Color(255, 203, 58));
         botonMapaZ.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        botonMapaZ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/location (1).png"))); // NOI18N
+        botonMapaZ.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoMapa3.png"))); // NOI18N
         botonMapaZ.setText("MAPA Z");
         botonMapaZ.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
         botonMapaZ.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

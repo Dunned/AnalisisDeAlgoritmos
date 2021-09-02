@@ -5,9 +5,9 @@
  */
 package ventanas;
 
-import Informacion.Archivo;
-import alternativa.PlantaOxigeno;
-import alternativa.Usuario;
+import ManejoDeArchivos.Archivo;
+import Codigo.PlantaOxigeno;
+import Codigo.Usuario;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
