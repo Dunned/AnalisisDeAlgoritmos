@@ -6,10 +6,12 @@
 package ventanas;
 
 import Informacion.Archivo;
+import alternativa.PlantaOxigeno;
 import alternativa.Usuario;
 import java.awt.Color;
 import java.awt.Image;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -23,12 +25,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author Eduar
  */
-public class Registro extends javax.swing.JDialog {
+public class SubPantallaRegistro extends javax.swing.JDialog {
 
     String ruta = "";
     Usuario usuario;
 
-    public Registro(java.awt.Frame parent, boolean modal) {
+    public SubPantallaRegistro(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.setUndecorated(true);
         initComponents();
@@ -225,21 +227,20 @@ public class Registro extends javax.swing.JDialog {
     private void botonRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroActionPerformed
 
         if (validarDNI() && validarNumero() && validarContraseña() && validarNombreApellido() && validarFoto()) {
-           
+
             String dni = entradaDNI.getText();
             String numeroCelular = entradaNumero.getText();
             String nombre = entradaNombre.getText();
             String apellido = entradaApellido.getText();
             String contraseña = entradaContraseña1.getText();
-            usuario = new Usuario(dni, numeroCelular, nombre, apellido, contraseña, ruta);
-
+            ArrayList<PlantaOxigeno> plantasFavoritas = new ArrayList<PlantaOxigeno>();
+            usuario = new Usuario(dni, numeroCelular, nombre, apellido, contraseña, ruta, plantasFavoritas);
             Archivo archivo = new Archivo();
             int op = archivo.crearUsuario(usuario);
             if (op == 1) {
                 JOptionPane.showMessageDialog(this, "REGISTRO CORRECTO GRACIAS : " + usuario.getNombre() + " " + usuario.getApellido());
                 this.dispose();
             }
-
         } else {
             JOptionPane.showMessageDialog(this, "REVISE LOS CAMPOS");
         }
@@ -287,7 +288,7 @@ public class Registro extends javax.swing.JDialog {
     }
 
     private boolean validarFoto() {
-        if (ruta=="") {
+        if (ruta == "") {
             return false;
         }
         return true;
@@ -310,25 +311,27 @@ public class Registro extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registro.class
+            java.util.logging.Logger.getLogger(SubPantallaRegistro.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registro.class
+            java.util.logging.Logger.getLogger(SubPantallaRegistro.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registro.class
+            java.util.logging.Logger.getLogger(SubPantallaRegistro.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registro.class
+            java.util.logging.Logger.getLogger(SubPantallaRegistro.class
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Registro dialog = new Registro(new javax.swing.JFrame(), true);
+                SubPantallaRegistro dialog = new SubPantallaRegistro(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

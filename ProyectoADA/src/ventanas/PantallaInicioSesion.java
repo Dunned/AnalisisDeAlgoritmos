@@ -6,12 +6,12 @@ import java.awt.Color;
 import java.io.File;
 import javax.swing.JOptionPane;
 
-public class Login extends javax.swing.JFrame {
+public class PantallaInicioSesion extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
      */
-    public Login() {
+    public PantallaInicioSesion() {
         this.setUndecorated(true);
         initComponents();
         this.setLocationRelativeTo(null);
@@ -179,7 +179,7 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "NO EXISTE UN USUARIO CON EL DNI " + dni);
                 } else {
                     if (encadenador.contenido.getContraseña().equals(contraseña)) {
-                        VentanaOpcion ventanaOpcion=new VentanaOpcion(encadenador.contenido);
+                        PantallaPrincipal ventanaOpcion=new PantallaPrincipal(encadenador.contenido);
                         ventanaOpcion.setVisible(true);
                         this.dispose();
                     } else {
@@ -209,7 +209,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRegistrarseMouseExited
 
     private void botonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarseActionPerformed
-        Registro registro = new Registro(this, true); //JDIALOG REGISTRO
+        SubPantallaRegistro registro = new SubPantallaRegistro(this, true); //JDIALOG REGISTRO
         registro.setVisible(true);
     }//GEN-LAST:event_botonRegistrarseActionPerformed
 
@@ -230,20 +230,21 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaInicioSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login().setVisible(true);
+                new PantallaInicioSesion().setVisible(true);
             }
         });
     }

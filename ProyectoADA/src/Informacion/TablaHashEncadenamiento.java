@@ -12,7 +12,7 @@ public class TablaHashEncadenamiento implements Serializable {
     public TablaHashEncadenamiento() {
         usuarios = new Encadenador[TAM_TABLA]; // 0-97 
         for (int i = 0; i < TAM_TABLA; i++) {
-            Usuario usuario = new Usuario("", "", "", "", "", "");
+            Usuario usuario = new Usuario("", "", "", "", "", "", null);
             usuarios[i] = new Encadenador(usuario);
         }
     }
@@ -32,6 +32,7 @@ public class TablaHashEncadenamiento implements Serializable {
             this.usuarios[pos].contenido.setApellido(usuario.getApellido());
             this.usuarios[pos].contenido.setContraseña(usuario.getContraseña());
             this.usuarios[pos].contenido.setFoto(usuario.getFoto());
+            this.usuarios[pos].contenido.setPlantasFavoritas(usuario.getPlantasFavoritas());
         } else {
             Encadenador puntero = this.usuarios[pos];
             while (puntero.siguiente != null) {
@@ -39,7 +40,7 @@ public class TablaHashEncadenamiento implements Serializable {
             }
             Encadenador nuevo = new Encadenador(new Usuario(usuario.getDni(), usuario.getNumeroCelular(),
                     usuario.getNombre(), usuario.getApellido(),
-                    usuario.getContraseña(), usuario.getFoto()));
+                    usuario.getContraseña(), usuario.getFoto(), usuario.getPlantasFavoritas()));
             puntero.siguiente = nuevo;
             puntero = null;
         }
@@ -62,6 +63,6 @@ public class TablaHashEncadenamiento implements Serializable {
             puntero = null;
             return puntero;
         }
-
     }
+     
 }

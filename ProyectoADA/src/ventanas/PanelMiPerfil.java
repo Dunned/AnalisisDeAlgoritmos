@@ -10,6 +10,7 @@ import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 
 public class PanelMiPerfil extends javax.swing.JPanel {
@@ -41,7 +42,7 @@ public class PanelMiPerfil extends javax.swing.JPanel {
         labelParaFoto = new javax.swing.JLabel();
         labelDNI = new javax.swing.JLabel();
         labelTelefono = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 79, 97));
         setPreferredSize(new java.awt.Dimension(960, 740));
@@ -60,8 +61,8 @@ public class PanelMiPerfil extends javax.swing.JPanel {
         labelTelefono.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jPanel1.add(labelTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 580, 420, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/MiPerfil.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 830));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/MiPerfil.png"))); // NOI18N
+        jPanel1.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -77,7 +78,7 @@ public class PanelMiPerfil extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelDNI;
     private javax.swing.JLabel labelNombre;

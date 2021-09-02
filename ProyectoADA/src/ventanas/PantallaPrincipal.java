@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import Informacion.Archivo;
 import alternativa.Arista;
 import alternativa.Convertidor;
 import alternativa.Dijkstra;
@@ -19,13 +20,14 @@ import java.util.HashMap;
 import java.util.Map;
 import desplazable.Desface;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
  * @author Eduar
  */
-public class VentanaOpcion extends javax.swing.JFrame {
+public class PantallaPrincipal extends javax.swing.JFrame {
     Usuario usuario;
     Grafo grafo = new Grafo();
     Nodo nodoInicio = null;
@@ -33,7 +35,8 @@ public class VentanaOpcion extends javax.swing.JFrame {
     ArrayList<Arista> caminoRecorrido;
     Desface desplace;
 
-    public VentanaOpcion(Usuario usuario) {
+    public PantallaPrincipal(Usuario usuario) {
+        this.setUndecorated(true);
         this.usuario=usuario;
         initComponents();
         desplace = new Desface();
@@ -91,6 +94,8 @@ public class VentanaOpcion extends javax.swing.JFrame {
         botonMapaY = new javax.swing.JLabel();
         fondoBotonMapaZ = new javax.swing.JPanel();
         botonMapaZ = new javax.swing.JLabel();
+        fondoBotonSalir = new javax.swing.JPanel();
+        botonSalir = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         Mapa1 = new javax.swing.JPanel();
 
@@ -336,6 +341,47 @@ public class VentanaOpcion extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        fondoBotonSalir.setBackground(new java.awt.Color(30, 36, 37));
+        fondoBotonSalir.setForeground(new java.awt.Color(60, 63, 65));
+
+        botonSalir.setBackground(new java.awt.Color(255, 204, 51));
+        botonSalir.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 16)); // NOI18N
+        botonSalir.setForeground(new java.awt.Color(255, 203, 58));
+        botonSalir.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        botonSalir.setText("CERRAR SESIÓN");
+        botonSalir.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 10));
+        botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        botonSalir.setIconTextGap(20);
+        botonSalir.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                botonSalirMouseMoved(evt);
+            }
+        });
+        botonSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonSalirMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                botonSalirMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout fondoBotonSalirLayout = new javax.swing.GroupLayout(fondoBotonSalir);
+        fondoBotonSalir.setLayout(fondoBotonSalirLayout);
+        fondoBotonSalirLayout.setHorizontalGroup(
+            fondoBotonSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(botonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        fondoBotonSalirLayout.setVerticalGroup(
+            fondoBotonSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(fondoBotonSalirLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(botonSalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout menuPlegableLayout = new javax.swing.GroupLayout(menuPlegable);
         menuPlegable.setLayout(menuPlegableLayout);
         menuPlegableLayout.setHorizontalGroup(
@@ -346,6 +392,7 @@ public class VentanaOpcion extends javax.swing.JFrame {
             .addComponent(fondoBotonMapaX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(fondoBotonMapaY, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(fondoBotonMapaZ, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondoBotonSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuPlegableLayout.setVerticalGroup(
             menuPlegableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -361,10 +408,12 @@ public class VentanaOpcion extends javax.swing.JFrame {
                 .addComponent(fondoBotonMapaY, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(fondoBotonMapaZ, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 374, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fondoBotonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 284, Short.MAX_VALUE))
         );
 
-        getContentPane().add(menuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 860));
+        getContentPane().add(menuPlegable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 860));
 
         jPanel2.setBackground(new java.awt.Color(255, 79, 97));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -378,41 +427,10 @@ public class VentanaOpcion extends javax.swing.JFrame {
         Mapa1.setLayout(new java.awt.CardLayout());
         jPanel2.add(Mapa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 1140, 860));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -6, 1400, 870));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1400, 860));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Mapa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mapa1MouseClicked
-
-        /*Point coodenada = evt.getPoint();
-        System.out.println(evt.getX());
-        System.out.println(evt.getY());
-        if (grafo.existeNodo(coodenada.x, coodenada.y)) {
-            if (nodoInicio == null) {
-                System.out.println("seleccionasteinicio");
-                grafo.reiniciarColores();
-                nodoInicio = grafo.obtenerNodo(coodenada.x, coodenada.y);
-                nodoInicio.getCirculo().setColor(Color.YELLOW);
-            } else {
-                System.out.println("seleccionastefin");
-                nodoFin = grafo.obtenerNodo(coodenada.x, coodenada.y);
-                nodoFin.getCirculo().setColor(Color.GREEN);
-                graficarResultado();
-                Dijkstra dijkstra = new Dijkstra(grafo.obtenerMatrizAdyacencia(), Convertidor.letraANumero(nodoInicio.getId()), Convertidor.letraANumero(nodoFin.getId()));
-                Resultado resultado = dijkstra.caminoMinimos(); //
-                nodoInicio = null;//null para poder crear mas arista
-                nodoFin = null;//null para poder crear mas arista
-                caminoRecorrido = null;
-            }
-        } else {
-            nodoInicio = null;
-            nodoFin = null;
-            caminoRecorrido = null;
-            grafo.reiniciarColores();
-        }
-        dibujarGrafo();*/
-    }//GEN-LAST:event_Mapa1MouseClicked
 
     private void botonMenuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMenuMousePressed
 
@@ -464,13 +482,13 @@ public class VentanaOpcion extends javax.swing.JFrame {
 
     private void botonMapaXMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMapaXMouseClicked
 
-        Mapa mapa=new Mapa();
+        SubVentanaMapaChaclacayo mapa=new SubVentanaMapaChaclacayo(usuario);
         cambioPanel(mapa);
     //Mapa1.setVisible(true);
     }//GEN-LAST:event_botonMapaXMouseClicked
 
     private void botonFavoritosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonFavoritosMouseClicked
-        Favoritos favoritos=new Favoritos();
+        Favoritos favoritos=new Favoritos(usuario);
         cambioPanel(favoritos);
     }//GEN-LAST:event_botonFavoritosMouseClicked
 
@@ -504,6 +522,53 @@ public class VentanaOpcion extends javax.swing.JFrame {
         PanelMiPerfil panelMiPerfil=new PanelMiPerfil(usuario);
         cambioPanel(panelMiPerfil);
     }//GEN-LAST:event_botonMiPerfilMouseClicked
+
+    private void Mapa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mapa1MouseClicked
+
+        /*Point coodenada = evt.getPoint();
+        System.out.println(evt.getX());
+        System.out.println(evt.getY());
+        if (grafo.existeNodo(coodenada.x, coodenada.y)) {
+            if (nodoInicio == null) {
+                System.out.println("seleccionasteinicio");
+                grafo.reiniciarColores();
+                nodoInicio = grafo.obtenerNodo(coodenada.x, coodenada.y);
+                nodoInicio.getCirculo().setColor(Color.YELLOW);
+            } else {
+                System.out.println("seleccionastefin");
+                nodoFin = grafo.obtenerNodo(coodenada.x, coodenada.y);
+                nodoFin.getCirculo().setColor(Color.GREEN);
+                graficarResultado();
+                Dijkstra dijkstra = new Dijkstra(grafo.obtenerMatrizAdyacencia(), Convertidor.letraANumero(nodoInicio.getId()), Convertidor.letraANumero(nodoFin.getId()));
+                Resultado resultado = dijkstra.caminoMinimos(); //
+                nodoInicio = null;//null para poder crear mas arista
+                nodoFin = null;//null para poder crear mas arista
+                caminoRecorrido = null;
+            }
+        } else {
+            nodoInicio = null;
+            nodoFin = null;
+            caminoRecorrido = null;
+            grafo.reiniciarColores();
+        }
+        dibujarGrafo();*/
+    }//GEN-LAST:event_Mapa1MouseClicked
+
+    private void botonSalirMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseMoved
+        fondoBotonSalir.setBackground(new Color(52,59,60));
+    }//GEN-LAST:event_botonSalirMouseMoved
+
+    private void botonSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseClicked
+        if (this.usuario.getPlantasFavoritas()!=null) {
+           Archivo archivo=new Archivo();
+        archivo.editarUsuario(this.usuario.getDni(), this.usuario.getPlantasFavoritas());
+        this.dispose(); 
+        }
+    }//GEN-LAST:event_botonSalirMouseClicked
+
+    private void botonSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonSalirMouseExited
+        fondoBotonSalir.setBackground(new Color(30,36,37));
+    }//GEN-LAST:event_botonSalirMouseExited
 /*
     private void dibujarGrafo() {
         Mapa1.paint(Mapa1.getGraphics());
@@ -575,20 +640,21 @@ public class VentanaOpcion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaOpcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaOpcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaOpcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaOpcion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new VentanaOpcion().setVisible(true);
+                //new PantallaPrincipal().setVisible(true);
             }
         });
     }
@@ -601,12 +667,14 @@ public class VentanaOpcion extends javax.swing.JFrame {
     private javax.swing.JLabel botonMapaZ;
     private javax.swing.JLabel botonMenu;
     private javax.swing.JLabel botonMiPerfil;
+    private javax.swing.JLabel botonSalir;
     private javax.swing.JPanel fondoBotonFavoritos;
     private javax.swing.JPanel fondoBotonMapaX;
     private javax.swing.JPanel fondoBotonMapaY;
     private javax.swing.JPanel fondoBotonMapaZ;
     private javax.swing.JPanel fondoBotonMenu;
     private javax.swing.JPanel fondoBotonPerfil;
+    private javax.swing.JPanel fondoBotonSalir;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel menuPlegable;
     // End of variables declaration//GEN-END:variables

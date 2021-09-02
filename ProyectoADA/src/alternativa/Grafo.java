@@ -105,9 +105,9 @@ public class Grafo {
 
     public void reiniciarColores() {
         for (Map.Entry<Nodo, HashMap<Nodo, Arista>> entry : mapa.entrySet()) {
-            entry.getKey().getCirculo().setColor(Color.BLUE);
+            entry.getKey().getCirculo().setColor( new Color(52,59,60));
             for (Map.Entry<Nodo, Arista> relacion : entry.getKey().obtenerNodosAdyacentes().entrySet()) {
-                relacion.getValue().setColor(Color.BLACK);
+                relacion.getValue().setColor(new Color(32,111,169));
             }
         }
     }

@@ -3,6 +3,7 @@ package alternativa;
 import java.awt.Image;
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Usuario implements Serializable {
 
@@ -12,14 +13,32 @@ public class Usuario implements Serializable {
     private String apellido;
     private String contraseña;
     private String rutaFoto;
-
-    public Usuario(String dni, String numeroCelular, String nombre, String apellido, String contraseña, String ruta) {
+    private ArrayList<PlantaOxigeno> plantasFavoritas;
+    
+    public Usuario(String dni, String numeroCelular, String nombre, String apellido, String contraseña, String ruta,ArrayList<PlantaOxigeno> plantasFavoritas) {
         this.dni = dni;
         this.numeroCelular = numeroCelular;
         this.nombre = nombre;
         this.apellido = apellido;
         this.contraseña = contraseña;
         this.rutaFoto = ruta;
+        this.plantasFavoritas=plantasFavoritas;
+    }
+
+    public String getRutaFoto() {
+        return rutaFoto;
+    }
+
+    public void setRutaFoto(String rutaFoto) {
+        this.rutaFoto = rutaFoto;
+    }
+
+    public ArrayList<PlantaOxigeno> getPlantasFavoritas() {
+        return plantasFavoritas;
+    }
+
+    public void setPlantasFavoritas(ArrayList<PlantaOxigeno> plantasFavoritas) {
+        this.plantasFavoritas = plantasFavoritas;
     }
 
     public String getDni() {

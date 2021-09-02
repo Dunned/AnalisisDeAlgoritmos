@@ -19,8 +19,8 @@ public class Circulo implements Serializable {
      */
     public Circulo(Point coordenada,String etiqueta) {
         this.coordenada = coordenada;
-        color = Color.blue;
-        diametro = 25;
+        color = new Color(52,59,60);
+        diametro = 18;
         this.etiqueta=etiqueta;
         fuente = new Font("TimesRoman", Font.BOLD, 20);
         izquierda = 0;
