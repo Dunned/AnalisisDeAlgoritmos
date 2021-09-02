@@ -1,10 +1,18 @@
 package Codigo;
 
+import java.awt.Color;
+
 public class Convertidor {
 
     public static final int infinito = 999;
 
-    ;
+    public static Color colorLineaDefecto =new Color(154,130,130) ;
+    public static Color colorLineaTrazado =new Color(226,48,48) ;
+    public static Color colorNodoNormal =new Color(52, 59, 60) ;
+    public static Color colorNodoPlanta =new Color(0,183,84) ;
+    public static Color colorEtiquetaNodo =new Color(0, 35, 103) ;
+    public static Color colorNodoInicio =new Color(54, 179, 197) ;
+    public static Color colorNodoFin =new Color(255, 79, 97) ;
 
     public static int letraANumero(String letra) {
         int numero = 0;

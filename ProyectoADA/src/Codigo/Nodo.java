@@ -18,8 +18,11 @@ public class Nodo {
         this.coordenada = coordenada;
     }
 
+    
     public void setPlantaOxigeno(PlantaOxigeno plantaOxigeno) {
         this.plantaOxigeno = plantaOxigeno;
+        this.circulo.setEtiqueta(this.plantaOxigeno.getNombre());
+        this.circulo.setIzquierda(18);
     }
 
     public PlantaOxigeno getPlantaOxigeno() {

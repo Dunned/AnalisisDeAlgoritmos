@@ -28,7 +28,7 @@ public class Grafo {
         int[][] matriz = new int[cantidadNodos][cantidadNodos];
         for (int i = 0; i < cantidadNodos; i++) {
             for (int j = 0; j < cantidadNodos; j++) {
-                    matriz[i][j] = Convertidor.infinito;
+                matriz[i][j] = Convertidor.infinito;
             }
         }
 
@@ -105,9 +105,13 @@ public class Grafo {
 
     public void reiniciarColores() {
         for (Map.Entry<Nodo, HashMap<Nodo, Arista>> entry : mapa.entrySet()) {
-            entry.getKey().getCirculo().setColor( new Color(52,59,60));
+            if (entry.getKey().getPlantaOxigeno() != null) { //Si ese nodo contiene una planta de Oxigeno
+                entry.getKey().getCirculo().setColor(Convertidor.colorNodoPlanta);
+            } else { //Si no contiene Planta Oxigeno
+                entry.getKey().getCirculo().setColor(Convertidor.colorNodoNormal);
+            }
             for (Map.Entry<Nodo, Arista> relacion : entry.getKey().obtenerNodosAdyacentes().entrySet()) {
-                relacion.getValue().setColor(new Color(32,111,169));
+                relacion.getValue().setColor(Convertidor.colorLineaDefecto);
             }
         }
     }

@@ -497,8 +497,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMapaYMouseMoved
 
     private void botonMapaYMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMapaYMouseClicked
-        Mapa2 mapa2=new Mapa2();
-        cambioPanel(mapa2);
+        SubVentanaMapaCieneguilla subVentanaMapaCieneguilla=new SubVentanaMapaCieneguilla(usuario);
+        cambioPanel(subVentanaMapaCieneguilla);
     }//GEN-LAST:event_botonMapaYMouseClicked
 
     private void botonMapaYMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMapaYMouseExited
@@ -510,8 +510,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMapaZMouseMoved
 
     private void botonMapaZMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMapaZMouseClicked
-        Mapa3 mapa3=new Mapa3();
-        cambioPanel(mapa3);
+        SubVentanaCiudadUniversitaria subVentanaCiudadUniversitaria=new SubVentanaCiudadUniversitaria(usuario);
+        cambioPanel(subVentanaCiudadUniversitaria);
     }//GEN-LAST:event_botonMapaZMouseClicked
 
     private void botonMapaZMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMapaZMouseExited

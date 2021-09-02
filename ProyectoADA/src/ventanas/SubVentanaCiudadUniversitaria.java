@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
  *
  * @author Eduar
  */
-public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
+public class SubVentanaCiudadUniversitaria extends javax.swing.JPanel {
 
     Usuario usuario;
     Grafo grafo = new Grafo();
@@ -35,7 +35,7 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
     ArrayList<PlantaOxigeno> plantasFavoritas;
     int recorridoTotal;
 
-    public SubVentanaMapaChaclacayo(Usuario usuario) {
+    public SubVentanaCiudadUniversitaria(Usuario usuario) {
         initComponents();
         this.usuario = usuario;
         this.plantasFavoritas = new ArrayList<PlantaOxigeno>();
@@ -130,115 +130,29 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         , String numeroTelefono, String descripcion
         )*/
         caminoRecorrido = new ArrayList<Arista>();
-        Nodo p1 = new Nodo("A", new Point(161, 347));
-        Nodo p2 = new Nodo("B", new Point(333, 341));
-        Nodo p3 = new Nodo("C", new Point(505, 341));
-        Nodo p4 = new Nodo("D", new Point(711, 205));
-        Nodo p5 = new Nodo("E", new Point(592, 140));
-        Nodo p6 = new Nodo("F", new Point(641, 20));
-        Nodo p7 = new Nodo("G", new Point(331, 38));
-        Nodo p8 = new Nodo("H", new Point(217, 39));
-        Nodo p9 = new Nodo("I", new Point(156, 97));
-        Nodo p10 = new Nodo("J", new Point(100, 35));
-        Nodo p11 = new Nodo("K", new Point(11, 74));
-        Nodo p12 = new Nodo("L", new Point(54, 180));
-        Nodo p13 = new Nodo("M", new Point(54, 286));
-        Nodo p14 = new Nodo("N", new Point(29, 397));
-        Nodo p15 = new Nodo("O", new Point(176, 438));
-        Nodo p16 = new Nodo("P", new Point(333, 436));
-        Nodo p17 = new Nodo("Q", new Point(583, 430));
-        Nodo p18 = new Nodo("R", new Point(678, 332));
-        Nodo p19 = new Nodo("S", new Point(565, 266));
-        Nodo p20 = new Nodo("T", new Point(372, 239));
-        Nodo p21 = new Nodo("U", new Point(165, 205));
-        Nodo p22 = new Nodo("V", new Point(367, 139));
-        Nodo p23 = new Nodo("W", new Point(476, 96));
-        Nodo p24 = new Nodo("X", new Point(249, 123));
+        /*PlantaOxigeno(String nombre
+        , String rutaImagen, String Distrito
+        , String Direccion1, String Direccion2
+        , String numeroTelefono, String descripcion
+        )*/
+        caminoRecorrido = new ArrayList<Arista>();
+        //Creacion de Nodos
+        
+        //
 
-        //Decidimos cuales son plantas de Oxigeno
-        PlantaOxigeno a = new PlantaOxigeno("PUREZA",
+        //Decidimos cuales son plantas de oxigeno
+        /*PlantaOxigeno a = new PlantaOxigeno("PUREZA",
                 "\\imagenesLugares\\oxigenoPatitas.jpg", "CHACLACAYO",
                 "URB. Miguel Grau Mz S Lote 19", "Av Integracion Mz S 19",
                 "9997402359", "LOS MEJORES PRECIOS");
 
-        PlantaOxigeno x = new PlantaOxigeno("OXIGENA",
-                "\\imagenesLugares\\oxigenoPedroSanto.jpg", "CHACLACAYO",
-                "URB. Moron Chico", "Av Tiburoness Mz K Lote 20",
-                "9997404265", "SIN COLAS NI AGLOMERACIONES");
 
-        p1.setPlantaOxigeno(a);
-        p24.setPlantaOxigeno(x);
-        //
+        p1.setPlantaOxigeno(a);*/
+        
         //Insertamos todos los nodos
-        grafo.insertarNodo(p1);
-        grafo.insertarNodo(p2);
-        grafo.insertarNodo(p3);
-        grafo.insertarNodo(p4);
-        grafo.insertarNodo(p5);
-        grafo.insertarNodo(p6);
-        grafo.insertarNodo(p7);
-        grafo.insertarNodo(p8);
-        grafo.insertarNodo(p9);
-        grafo.insertarNodo(p10);
-        grafo.insertarNodo(p11);
-        grafo.insertarNodo(p12);
-        grafo.insertarNodo(p13);
-        grafo.insertarNodo(p14);
-        grafo.insertarNodo(p15);
-        grafo.insertarNodo(p16);
-        grafo.insertarNodo(p17);
-        grafo.insertarNodo(p18);
-        grafo.insertarNodo(p19);
-        grafo.insertarNodo(p20);
-        grafo.insertarNodo(p21);
-        grafo.insertarNodo(p22);
-        grafo.insertarNodo(p23);
-        grafo.insertarNodo(p24);
-
-        //Conexiones A
-        p1.insertarNodoAdyacente(p2, 5); //B
-        p1.insertarNodoAdyacente(p13, 4); //M
-        p1.insertarNodoAdyacente(p14, 2); //N
-        p1.insertarNodoAdyacente(p15, 6); //O
-        p1.insertarNodoAdyacente(p21, 10); //U
-        //Conexiones B
-        p2.insertarNodoAdyacente(p16, 10); //P
-        p2.insertarNodoAdyacente(p3, 20); //C
-        p2.insertarNodoAdyacente(p21, 5); //U
-        p2.insertarNodoAdyacente(p20, 6); //T
-        //Conexiones C
-        p3.insertarNodoAdyacente(p16, 2); //p
-        p3.insertarNodoAdyacente(p20, 3); //t
-        p3.insertarNodoAdyacente(p17, 8); //q
-        p3.insertarNodoAdyacente(p18, 11); //r
-        //Conexiones Q
-        p17.insertarNodoAdyacente(p18, 2);//r
-        //Conexiones R
-        p18.insertarNodoAdyacente(p19, 3); //S
-        //Conexiones S
-        p19.insertarNodoAdyacente(p4, 4); //D
-        p19.insertarNodoAdyacente(p5, 5); //E
-        p19.insertarNodoAdyacente(p23, 2);//W
-        //Conexiones D
-        p4.insertarNodoAdyacente(p6, 7); //F
-        //Conexion F
-        p6.insertarNodoAdyacente(p23, 4); //W
-        //Conexion W
-        p23.insertarNodoAdyacente(p7, 4); //G
-        p23.insertarNodoAdyacente(p22, 2);//V
-        //Conexion V
-        p22.insertarNodoAdyacente(p19, 3); //S
-        p22.insertarNodoAdyacente(p24, 5); //X
-        //Nodo X
-        p24.insertarNodoAdyacente(p8, 2); //H
-        p24.insertarNodoAdyacente(p9, 5); // I 
-        p24.insertarNodoAdyacente(p21, 3); //U
-        //Nodo I
-        p9.insertarNodoAdyacente(p10, 7); //J
-        p9.insertarNodoAdyacente(p12, 6); //L
-        //Nodo k
-        p11.insertarNodoAdyacente(p12, 2);
-        p11.insertarNodoAdyacente(p14, 5);
+        
+        
+        //CONEXIONES
 
     }
 
@@ -268,11 +182,11 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         });
         PanelMapa.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/MapaChaclacayo.jpg"))); // NOI18N
+        labelMapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mapaCiudadUniversitaria.png"))); // NOI18N
         labelMapa.setPreferredSize(new java.awt.Dimension(960, 720));
-        PanelMapa.add(labelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 464));
+        PanelMapa.add(labelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 490));
 
-        jPanel1.add(PanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 147, 740, 465));
+        jPanel1.add(PanelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 190, 740, 490));
 
         botonAñadirFavorito.setBackground(new java.awt.Color(255, 102, 102));
         botonAñadirFavorito.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
@@ -299,19 +213,19 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         etiquetaNodoOrigen.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         etiquetaNodoOrigen.setForeground(new java.awt.Color(0, 153, 204));
         etiquetaNodoOrigen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(etiquetaNodoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 360, 220, 60));
+        jPanel1.add(etiquetaNodoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 340, 220, 60));
 
         etiquetaRecorridoTotal.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         etiquetaRecorridoTotal.setForeground(new java.awt.Color(255, 204, 0));
         etiquetaRecorridoTotal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(etiquetaRecorridoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 590, 220, 70));
+        jPanel1.add(etiquetaRecorridoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 570, 220, 70));
 
         etiquetaNodoFin.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         etiquetaNodoFin.setForeground(new java.awt.Color(255, 51, 51));
         etiquetaNodoFin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(etiquetaNodoFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 450, 220, 70));
+        jPanel1.add(etiquetaNodoFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 430, 220, 70));
 
-        fondoMapaChaclacacyo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mapaFondoChaclacayo.png"))); // NOI18N
+        fondoMapaChaclacacyo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoVentanaCiudadUniversitarioa.png"))); // NOI18N
         jPanel1.add(fondoMapaChaclacacyo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 1160, 870));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
