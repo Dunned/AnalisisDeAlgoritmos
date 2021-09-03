@@ -21,6 +21,11 @@ public class Archivo {
     String archivoUsuarios = "Usuarios.bin";
     TablaHashEncadenamiento tablaHash;
 
+    /**
+     * DESCRIPCION: METODO PARA SABER SI EXISTE UN USUARIO EN LA TABLA HASH ALMACENADA EN UN ARCHIVO BINARIO
+     * @param usuario: USUARIO A BUSCAR
+     * @return : VALOR DE VERDAD SI EXISTE O FALSO SI NO EXISTE
+     */
     public boolean existeUsuario(Usuario usuario) {
         recuperarTabla();
         Encadenador encadenador = tablaHash.buscarEncadenamiento(usuario.getDni());
@@ -30,6 +35,11 @@ public class Archivo {
         return true;
     }
 
+    /**
+     * DESCRIPCION: METODO PARA ALMACENAR UN USUARIO EN LA TABLA HASH Y POSTERIORMENTE MANDARLO A UN ARCHIVO BINARIO
+     * @param usuario: USUARIO A ALMACENAR
+     * @return: 1 SI SE PUDO GUARDAR O 0 SI ES LA PRIMER USUARIO A GUARDAR
+     */
     public int crearUsuario(Usuario usuario) {
         int op = 0;
         archivo = new File(archivoUsuarios);
@@ -73,6 +83,9 @@ public class Archivo {
         return op;
     }
 
+    /**
+     * DESCRIPCION: METODO QUE NOS PERMITE RECUPERAR EN MEMORIA RAM LA TABLA HASH ALMACENADA EN ARCHIVO BINARIO
+     */
     public void recuperarTabla() {
         try {
             FileInputStream archivo = new FileInputStream(archivoUsuarios);
@@ -91,6 +104,11 @@ public class Archivo {
         }
     }
 
+    /**
+     * DESCRIPCION : METODO PARA PODER AGREGAR PLANTAS DE OXIGENOS FAVORITA A UN USUARIO
+     * @param dni: DNI DEL USUARIO A EDITAR
+     * @param plantasFavoritas: PLANTAS FAVORITAS A AGREGAR
+     */
     public void editarUsuario(String dni,ArrayList<PlantaOxigeno> plantasFavoritas) {
         archivo = new File(archivoUsuarios);
         try {
@@ -108,6 +126,10 @@ public class Archivo {
         }
     }
 
+    /**
+     * DESCRIPCION: METODO PARA OBTENER LA TABLA HASH DEL PROGRAMA
+     * @return 
+     */
     public TablaHashEncadenamiento getTablaHash() {
         return tablaHash;
     }

@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ventanas;
 
 import Codigo.Arista;
 import Codigo.Convertidor;
 import Codigo.Dijkstra;
+import Codigo.Floyd;
 import Codigo.Grafo;
 import Codigo.Nodo;
 import Codigo.PlantaOxigeno;
@@ -43,92 +39,7 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         creadoDeMapa();
     }
 
-    /*
-    case "A":
-                numero = 0;
-                break;
-            case "B":
-                numero = 1;
-                break;
-            case "C":
-                numero = 2;
-                break;
-            case "D":
-                numero = 3;
-                break;
-            case "E":
-                numero = 4;
-                break;
-            case "F":
-                numero = 5;
-                break;
-            case "G":
-                numero = 6;
-                break;
-            case "H":
-                numero = 7;
-                break;
-            case "I":
-                numero = 8;
-                break;
-            case "J":
-                numero = 9;
-                break;
-            case "K":
-                numero = 10;
-                break;
-            case "L":
-                numero = 11;
-                break;
-            case "M":
-                numero = 12;
-                break;
-            case "N":
-                numero = 13;
-                break;
-            case "O":
-                numero = 14;
-                break;
-            case "P":
-                numero = 15;
-                break;
-            case "Q":
-                numero = 16;
-                break;
-            case "R":
-                numero = 17;
-                break;
-            case "S":
-                numero = 18;
-                break;
-            case "T":
-                numero = 19;
-                break;
-            case "U":
-                numero = 20;
-                break;
-            case "V":
-                numero = 21;
-                break;
-            case "W":
-                numero = 22;
-                break;
-            case "X":
-                numero = 23;
-                break;
-            case "Y":
-                numero = 24;
-                break;
-            case "Z":
-                numero = 25;
-                break;
-     */
     private void creadoDeMapa() {
-        /*PlantaOxigeno(String nombre
-        , String rutaImagen, String Distrito
-        , String Direccion1, String Direccion2
-        , String numeroTelefono, String descripcion
-        )*/
         caminoRecorrido = new ArrayList<Arista>();
         Nodo p1 = new Nodo("A", new Point(161, 347));
         Nodo p2 = new Nodo("B", new Point(333, 341));
@@ -156,18 +67,37 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         Nodo p24 = new Nodo("X", new Point(249, 123));
 
         //Decidimos cuales son plantas de Oxigeno
-        PlantaOxigeno a = new PlantaOxigeno("PUREZA",
+        PlantaOxigeno a = new PlantaOxigeno("PATITAS",
                 "\\imagenesLugares\\oxigenoPatitas.jpg", "CHACLACAYO",
                 "URB. Miguel Grau Mz S Lote 19", "Av Integracion Mz S 19",
-                "9997402359", "LOS MEJORES PRECIOS");
+                "9997402359", "Las plantas de producción de oxígeno y aire medicinal tienen las siguientes ventajas: ... Se puede disponer de oxígeno y aire medicinal siempre que se necesite, en cualquier lugar y sin coste adicional. ");
 
-        PlantaOxigeno x = new PlantaOxigeno("OXIGENA",
+        PlantaOxigeno b = new PlantaOxigeno("OXIGENA",
                 "\\imagenesLugares\\oxigenoPedroSanto.jpg", "CHACLACAYO",
                 "URB. Moron Chico", "Av Tiburoness Mz K Lote 20",
-                "9997404265", "SIN COLAS NI AGLOMERACIONES");
+                "9997404265", "La planta móvil de producción de oxígeno es un sistema generador de oxígeno construido en un contenedor ISO. El oxígeno se produce a partir de aire comprimido mediante la tecnología de adsorción de oscilación de presión (PSA).");
 
+        PlantaOxigeno c = new PlantaOxigeno("RESPIRA",
+                "\\imagenesLugares\\oxigenoRespira.jpg", "CHACLACAYO",
+                "URB. LA FLORESTA KM 22", "Av INTEGRACION Mz P Lote 10",
+                "9987404750", "Esta planta permitirá abastecer de manera gratuita este medicamento para el tratamiento con oxigenoterapia que requieran los vecinos del distrito");
+
+        PlantaOxigeno d = new PlantaOxigeno("CRECE",
+                "\\imagenesLugares\\oxigenoCrece.jpg", "CHACLACAYO",
+                "AA.HH ALFONSO COBIAN KM 22", "Av MAGUIARTE GIRON K Lote 50",
+                "9987404567", "Preocupados por la alta demanda de oxígeno medicinal que la emergencia sanitaria ha generado a nivel nacional, implementamos una planta de OXIGENO");
+
+        PlantaOxigeno e = new PlantaOxigeno("MANA",
+                "\\imagenesLugares\\oxigenoMana.jpg", "CHACLACAYO",
+                "Centro Poblado Alianza Sur", "Ovalo MIRON K--Lote 4-50",
+                "9087984567", "El Proyecto Especial Legado Juegos Panamericanos y Parapanamericanos puso en funcionamiento hoy una moderna planta de oxígeno medicinal traída desde Francia");
+
+        //Relaciones
         p1.setPlantaOxigeno(a);
-        p24.setPlantaOxigeno(x);
+        p24.setPlantaOxigeno(b);
+        p10.setPlantaOxigeno(c);
+        p6.setPlantaOxigeno(d);
+        p17.setPlantaOxigeno(e);
         //
         //Insertamos todos los nodos
         grafo.insertarNodo(p1);
@@ -194,7 +124,6 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         grafo.insertarNodo(p22);
         grafo.insertarNodo(p23);
         grafo.insertarNodo(p24);
-
         //Conexiones A
         p1.insertarNodoAdyacente(p2, 5); //B
         p1.insertarNodoAdyacente(p13, 4); //M
@@ -239,7 +168,6 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
         //Nodo k
         p11.insertarNodoAdyacente(p12, 2);
         p11.insertarNodoAdyacente(p14, 5);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -349,9 +277,15 @@ public class SubVentanaMapaChaclacayo extends javax.swing.JPanel {
                     botonAñadirFavorito.setVisible(true);
                 }
                 graficarResultado();
+
+                //METODOS CAMINOS MINIMOS
                 Dijkstra dijkstra = new Dijkstra(grafo.obtenerMatrizAdyacencia(), Convertidor.letraANumero(nodoInicio.getId()), Convertidor.letraANumero(nodoFin.getId()));
-                Resultado resultado = dijkstra.caminoMinimos(); //
+                Floyd floyd = new Floyd(grafo.obtenerMatrizAdyacencia(), Convertidor.letraANumero(nodoInicio.getId()), Convertidor.letraANumero(nodoFin.getId()));
+                Resultado resultado = dijkstra.caminoMinimos(); // EJECUCION DJISTRA
+                floyd.hallarMatrizCaminosMinimos(); //EJECUCION FLOYD
                 etiquetaRecorridoTotal.setText(String.valueOf(recorridoTotal));
+                JOptionPane.showMessageDialog(this, "NUMERO OPERACION APROXIMADAS EN DIJKSTRA: " + dijkstra.numeroOperaciones + "\n"
+                        + "NUMERO OPERACION APROXIMADAS EN FLOYD   : " + floyd.numeroOperaciones);
                 nodoInicio = null;//null para poder crear mas arista
                 nodoFin = null;//null para poder crear mas arista
                 caminoRecorrido = null;

@@ -12,11 +12,10 @@ public class Circulo implements Serializable {
     private Font fuente;
     private int izquierda;
     private int grosorBorde;
-
     /**
-     * Metodo Constructor para un Objeto Circulo
-     *
-     * @param coordenadas: Cordenada donde se ubicara el Objeto Circulo
+     * DESCRIPCION: ESTE ES EL METODO CONSTRUCTOR PARA UN OBJETO CIRCULO.
+     * @param coordenada : PARAMETRO PARA UBICAR EL CIRCULO EN EL PANEL.
+     * @param etiqueta : PARAMETRO PARA NOMBRAR EL CIRCULO EN EL PANEL.
      */
     public Circulo(Point coordenada, String etiqueta) {
         this.coordenada = coordenada;
@@ -27,7 +26,10 @@ public class Circulo implements Serializable {
         izquierda = 0;
         grosorBorde = 3;
     }
-
+    /**
+     * DESCRIPCION: ESTE METODO SIRVE PARA DIBUJAR EL CIRCULO EN EL PANEL.
+     * @param g: OBJETO PARA DIBUJAR EN EL PANEL.
+     */
     public void dibujarCirculo(Graphics g) {
         if (coordenada != null) {
             ((Graphics2D) g).setColor(color);
@@ -45,7 +47,11 @@ public class Circulo implements Serializable {
             }
         }
     }
-
+    /**
+     * DESCRIPCION: ESTE METODO SIRVE PARA DIBUJAR EL CIRCULO EN EL PANEL.
+     * @param g: OBJETO PARA DIBUJAR EN EL PANEL.
+     * @param remarcado: OBJETO PARA CAMBIAR EL COLOR DE UN NODO SELECCIONADO.
+     */
     public void dibujarCirculo(Graphics g, Color remarcado) {
         if (coordenada != null) {
             ((Graphics2D) g).setColor(remarcado);
@@ -63,23 +69,38 @@ public class Circulo implements Serializable {
             }
         }
     }
-
+    /**
+     * DESCRIPCION: METODO PARA OBTENER EL DIAMETRO DEL CIRCULO.
+     * @return : RETORNA EL DIAMETRO DEL CIRCULO.
+     */
     public int getDiametro() {
         return diametro;
     }
-
+    /**
+     * DESCRIPCION: METODO PARA ESTABLECER EL COLOR DEL CIRCULO.
+     * @param color: VARIABLE PARA ESTABLECER EL COLOR DEL CIRCULO.
+     */
     public void setColor(Color color) {
         this.color = color;
     }
-
+    /**
+     * DESCRIPCION: METODO PARA VISUALIZAR EL NOMBRE DEL CIRCULO.
+     * @return : RETORNA EL NOMBRE DEL CIRCULO.
+     */
     public String getEtiqueta() {
         return etiqueta;
     }
-
+    /**
+     * DESCRIPCION: ESTE METODO SIRVE PARA ESTABLECER UNA CADENA DE CARACTERES COMO VALOR DE LA VARIABLE ETIQUETA.
+     * @param etiqueta :PARAMETRO PARA NOMBRAR EL CIRCULO EN EL PANEL.
+     */
     public void setEtiqueta(String etiqueta) {
         this.etiqueta = etiqueta;
     }
-
+    /**
+     * DESCRIPCION: ESTE METODO SIRVE PARA ESTABLECER UN VALOR ENTERO COMO VALOR DE LA VARIABLE IZQUIERDA.
+     * @param izquierda: PARAMETRO PARA REGULAR LA UBICACION DE LA ETIQUETA.
+     */
     public void setIzquierda(int izquierda) {
         this.izquierda = izquierda;
     }

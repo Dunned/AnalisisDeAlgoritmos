@@ -13,7 +13,11 @@ public class Convertidor {
     public static Color colorEtiquetaNodo =new Color(0, 35, 103) ;
     public static Color colorNodoInicio =new Color(54, 179, 197) ;
     public static Color colorNodoFin =new Color(255, 79, 97) ;
-
+    /**
+     * DESCRIPCION: METODO PARA CONVERTIR DE LETRA A NUMERO.
+     * @param letra:PARAMETRO CON UN VALOR DE UNA LETRA.
+     * @return : RETORNA UN NUMERO EQUIVALENTE A LA LETRA INGRESADA.
+     */
     public static int letraANumero(String letra) {
         int numero = 0;
         switch (letra) {
@@ -98,7 +102,11 @@ public class Convertidor {
         }
         return numero;
     }
-
+    /**
+     * DESCRIPCION: METODO PARA CONVERTIR DE NUMERO A LETRA.
+     * @param numero: PARAMETRO CON UN VALOR DE UN NUMERO ENTERO.
+     * @return : RETORNA UNA LETRA EQUIVALENTE A EL NUMERO INGRESADO.
+     */
     public static String numeroALetra(int numero) {
         String letra = "";
         switch (numero) {

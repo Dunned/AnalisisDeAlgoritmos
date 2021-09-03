@@ -8,6 +8,7 @@ package ventanas;
 import Codigo.Arista;
 import Codigo.Convertidor;
 import Codigo.Dijkstra;
+import Codigo.Floyd;
 import Codigo.Grafo;
 import Codigo.Nodo;
 import Codigo.PlantaOxigeno;
@@ -43,117 +44,169 @@ public class SubVentanaCiudadUniversitaria extends javax.swing.JPanel {
         creadoDeMapa();
     }
 
-    /*
-    case "A":
-                numero = 0;
-                break;
-            case "B":
-                numero = 1;
-                break;
-            case "C":
-                numero = 2;
-                break;
-            case "D":
-                numero = 3;
-                break;
-            case "E":
-                numero = 4;
-                break;
-            case "F":
-                numero = 5;
-                break;
-            case "G":
-                numero = 6;
-                break;
-            case "H":
-                numero = 7;
-                break;
-            case "I":
-                numero = 8;
-                break;
-            case "J":
-                numero = 9;
-                break;
-            case "K":
-                numero = 10;
-                break;
-            case "L":
-                numero = 11;
-                break;
-            case "M":
-                numero = 12;
-                break;
-            case "N":
-                numero = 13;
-                break;
-            case "O":
-                numero = 14;
-                break;
-            case "P":
-                numero = 15;
-                break;
-            case "Q":
-                numero = 16;
-                break;
-            case "R":
-                numero = 17;
-                break;
-            case "S":
-                numero = 18;
-                break;
-            case "T":
-                numero = 19;
-                break;
-            case "U":
-                numero = 20;
-                break;
-            case "V":
-                numero = 21;
-                break;
-            case "W":
-                numero = 22;
-                break;
-            case "X":
-                numero = 23;
-                break;
-            case "Y":
-                numero = 24;
-                break;
-            case "Z":
-                numero = 25;
-                break;
-     */
+    
     private void creadoDeMapa() {
-        /*PlantaOxigeno(String nombre
-        , String rutaImagen, String Distrito
-        , String Direccion1, String Direccion2
-        , String numeroTelefono, String descripcion
-        )*/
-        caminoRecorrido = new ArrayList<Arista>();
-        /*PlantaOxigeno(String nombre
-        , String rutaImagen, String Distrito
-        , String Direccion1, String Direccion2
-        , String numeroTelefono, String descripcion
-        )*/
-        caminoRecorrido = new ArrayList<Arista>();
+         caminoRecorrido = new ArrayList<Arista>();
         //Creacion de Nodos
-        
-        //
-
+            Nodo p1 = new Nodo("A", new Point(99,114));
+            Nodo p2 = new Nodo("B", new Point(159,84));
+            Nodo p3 = new Nodo("C", new Point(143,179));
+            Nodo p4 = new Nodo("D", new Point(119,287));
+            Nodo p5 = new Nodo("E", new Point(149,236));
+            Nodo p6 = new Nodo("F", new Point(206,200));
+            Nodo p7 = new Nodo("G", new Point(194,286));
+            Nodo p8 = new Nodo("H", new Point(174,366));
+            Nodo p9 = new Nodo("I", new Point(166,464));
+            Nodo p10 = new Nodo("J", new Point(239,451));
+            Nodo p11 = new Nodo("K", new Point(270,385));
+            Nodo p12 = new Nodo("L", new Point(321,351));
+            Nodo p13 = new Nodo("M", new Point(400,261));
+            Nodo p14 = new Nodo("N", new Point(618,164));
+            Nodo p15 = new Nodo("O", new Point(600,35));
+            Nodo p16 = new Nodo("P", new Point(549,39));
+            Nodo p17 = new Nodo("Q", new Point(567,118));
+            Nodo p18 = new Nodo("R", new Point(508,133));
+            Nodo p19 = new Nodo("S", new Point(451,109));
+            Nodo p20 = new Nodo("T", new Point(432,183));
+            Nodo p21 = new Nodo("U", new Point(510,195));
+            Nodo p22 = new Nodo("V", new Point(299,255));
+            Nodo p23 = new Nodo("W", new Point(306,171));
+            Nodo p24 = new Nodo("X", new Point(348,109));
+            Nodo p25 = new Nodo("Y", new Point(414,50));
+            Nodo p26 = new Nodo("Z", new Point(331,23));                  
+            
+        //dibujo linea entre nodos
+            p1.insertarNodoAdyacente(p2,6);
+            p1.insertarNodoAdyacente(p3,5);
+            p1.insertarNodoAdyacente(p4,12);
+            p3.insertarNodoAdyacente(p5,2);
+            p3.insertarNodoAdyacente(p6,3);
+            p4.insertarNodoAdyacente(p9,9);
+            p5.insertarNodoAdyacente(p7,4);
+            p6.insertarNodoAdyacente(p23,6);
+            p6.insertarNodoAdyacente(p7,4);
+            p7.insertarNodoAdyacente(p8,4);
+            p8.insertarNodoAdyacente(p11,5);
+            p9.insertarNodoAdyacente(p10,6);
+            p10.insertarNodoAdyacente(p11,3);
+            p11.insertarNodoAdyacente(p12,3);
+            p12.insertarNodoAdyacente(p13,8);
+            p20.insertarNodoAdyacente(p21,7);
+            p13.insertarNodoAdyacente(p20,4);
+            p13.insertarNodoAdyacente(p22,5);
+            p14.insertarNodoAdyacente(p15,8);
+            p15.insertarNodoAdyacente(p16,3);
+            p16.insertarNodoAdyacente(p17,5);
+            p16.insertarNodoAdyacente(p25,9);
+            p17.insertarNodoAdyacente(p18,3);
+            p18.insertarNodoAdyacente(p19,3);
+            p19.insertarNodoAdyacente(p20,5);
+            p19.insertarNodoAdyacente(p24,6);
+            p21.insertarNodoAdyacente(p14,5);
+            p22.insertarNodoAdyacente(p23,4);
+            p23.insertarNodoAdyacente(p24,4);
+            p24.insertarNodoAdyacente(p25,5);
+            p25.insertarNodoAdyacente(p26,5);
+            
+            
+            
         //Decidimos cuales son plantas de oxigeno
-        /*PlantaOxigeno a = new PlantaOxigeno("PUREZA",
-                "\\imagenesLugares\\oxigenoPatitas.jpg", "CHACLACAYO",
+        PlantaOxigeno a = new PlantaOxigeno("HUACA",
+                "\\imagenesLugares\\huaca.png", "UNMSM",
+                "Av. República de Venezuela", "Cercado de Lima 15081",
+                "S/N", "Es un monumento arqueológico que se ubica dentro del campus universitario principal "
+                        + "—en uno de los extremos— de la UNMSM");
+        
+        PlantaOxigeno b = new PlantaOxigeno("FII",
+                "\\imagenesLugares\\fiii.jpg", "UNMSM",
+                "San Miguel - Cercado de Lima 15081", "Ciudad Universitaria",
+                "619 - 7000 anexo 1831", "La facultad en la actualidad, dentro de la organización de la universidad, "
+                        + "forma parte del área de Ingenierías y cuenta con las escuelas académico-profesionales de Ingeniería Industrial, "
+                        + "Ingeniería Textil, e Ingeniería de Seguridad y Salud en el Trabajo");
+        
+        PlantaOxigeno c = new PlantaOxigeno("COMEDOR",
+                "\\imagenesLugares\\comedor.jpg", "UNMSM",
                 "URB. Miguel Grau Mz S Lote 19", "Av Integracion Mz S 19",
-                "9997402359", "LOS MEJORES PRECIOS");
+                "619 - 7000 anexo 518", "La Oficina General de Bienestar Universitario brinda a los miembros de la comunidad "
+                        + "universitaria programas especiales de bienestar en materia de: alimentación, salud, promoción del deporte, "
+                        + "servicio social, transporte, adecuación del entorno y protección del ambiente, psicopedagógico y de psicología "
+                        + "organizacional, asistencia estudiantil, becas y créditos, apoyo familiar, bolsa de trabajo y formación laboral, "
+                        + "recreación y turismo.");
+        
+        PlantaOxigeno d = new PlantaOxigeno("ESTADIO",
+                "\\imagenesLugares\\estadio.jpg", "UNMSM",
+                "Cercado de Lima 15081", "Av. Venezuela 3450-3452",
+                "6197000", "El Estadio de la Universidad Nacional Mayor de San Marcos, denominado oficialmente como el «Coloso de América». "
+                        + "Fue inaugurado en 1951 conmemorando los 400 años de fundación de la Universidad de San Marcos. ");
+        
+        PlantaOxigeno e = new PlantaOxigeno("DERECHO",
+                "\\imagenesLugares\\derecho.jpg", "UNMSM",
+                "Av. Universitaria, Cercado de Lima 15081", "Ciudad Univesitaria",
+                "4520550", "La facultad en la actualidad, dentro de la organización de la universidad, forma parte del área de Humanidades,"
+                        + " Ciencias Jurídicas y Sociales y cuenta con las escuelas profesionales de Derecho y Ciencia Política, "
+                        + "que brindan tanto estudios de pregrado como de postgrado.");
+        
+        PlantaOxigeno f = new PlantaOxigeno("FISI",
+                "\\imagenesLugares\\fisi.jpg", "UNMSM",
+                "Calle Germán Amézaga s/n - Lima", "Ciudad Universitaria",
+                "(01) 6197000", "La facultad en la actualidad, dentro de la organización de la universidad, forma parte del área de "
+                        + "Ingenierías y cuenta con las escuelas académico-profesionales de Ingeniería de Sistemas y, de Ingeniería "
+                        + "de Software, que brindan tanto estudios de pregrado como de postgrado.");
+        
+        PlantaOxigeno g = new PlantaOxigeno("FIEE",
+                "\\imagenesLugares\\fiee.jpg", "UNMSM",
+                "Cercado de Lima 15081", "Ciudad Universitaria",
+                "6197000 Anexo 4224", "La facultad en la actualidad, dentro de la organización de la universidad, forma parte del área "
+                        + "de Ingenierías y cuenta con las escuelas académico-profesionales de Ingeniería Electrónica, "
+                        + "de Ingeniería Eléctrica, de Ingeniería de Telecomunicaciones, y de Ingeniería de Biomédica que brindan "
+                        + "tanto estudios de pregrado como de postgrado");
+        
+        PlantaOxigeno h = new PlantaOxigeno("BIBLIO",
+                "\\imagenesLugares\\biblioteca.jpg", "UNMSM",
+                "Edificio Biblioteca Central Pedro Zulen", " Av. Amezaga 375, Cercado de Lima 15081",
+                "6197000", "Es una institución encargada del apoyo a la comunidad universitaria sanmarquina en el fomento a la lectura, "
+                        + "la docencia y la investigación, ofreciendo modernos servicios y una infraestructura favorable para el estudio");
 
 
-        p1.setPlantaOxigeno(a);*/
+        p2.setPlantaOxigeno(a);//HUACA
+        p8.setPlantaOxigeno(b);//FII
+        p6.setPlantaOxigeno(c);//COMEDOR
+        p22.setPlantaOxigeno(d);//ESTADIO
+        p11.setPlantaOxigeno(e);//DERECHO
+        p18.setPlantaOxigeno(f);//FISI
+        p25.setPlantaOxigeno(g);//FIEE
+        p24.setPlantaOxigeno(h);//BIBLIOTECA
         
         //Insertamos todos los nodos
+        grafo.insertarNodo(p1);
+        grafo.insertarNodo(p2);
+        grafo.insertarNodo(p3);
+        grafo.insertarNodo(p4);
+        grafo.insertarNodo(p5);
+        grafo.insertarNodo(p6);
+        grafo.insertarNodo(p7);
+        grafo.insertarNodo(p8);
+        grafo.insertarNodo(p9);
+        grafo.insertarNodo(p10);
+        grafo.insertarNodo(p11);
+        grafo.insertarNodo(p12);
+        grafo.insertarNodo(p13);
+        grafo.insertarNodo(p14);
+        grafo.insertarNodo(p15);
+        grafo.insertarNodo(p16);
+        grafo.insertarNodo(p17);
+        grafo.insertarNodo(p18);
+        grafo.insertarNodo(p19);
+        grafo.insertarNodo(p20);
+        grafo.insertarNodo(p21);
+        grafo.insertarNodo(p22);
+        grafo.insertarNodo(p23);
+        grafo.insertarNodo(p24);
+        grafo.insertarNodo(p25);
+        grafo.insertarNodo(p26);
         
         
         //CONEXIONES
-
     }
 
     @SuppressWarnings("unchecked")
@@ -263,9 +316,15 @@ public class SubVentanaCiudadUniversitaria extends javax.swing.JPanel {
                     botonAñadirFavorito.setVisible(true);
                 }
                 graficarResultado();
+
+                //METODOS CAMINOS MINIMOS
                 Dijkstra dijkstra = new Dijkstra(grafo.obtenerMatrizAdyacencia(), Convertidor.letraANumero(nodoInicio.getId()), Convertidor.letraANumero(nodoFin.getId()));
-                Resultado resultado = dijkstra.caminoMinimos(); //
+                Floyd floyd = new Floyd(grafo.obtenerMatrizAdyacencia(), Convertidor.letraANumero(nodoInicio.getId()), Convertidor.letraANumero(nodoFin.getId()));
+                Resultado resultado = dijkstra.caminoMinimos(); // EJECUCION DJISTRA
+                floyd.hallarMatrizCaminosMinimos(); //EJECUCION FLOYD
                 etiquetaRecorridoTotal.setText(String.valueOf(recorridoTotal));
+                JOptionPane.showMessageDialog(this, "NUMERO OPERACION APROXIMADAS EN DIJKSTRA: "+dijkstra.numeroOperaciones+"\n"+
+                                                    "NUMERO OPERACION APROXIMADAS EN FLOYD   : "+floyd.numeroOperaciones);
                 nodoInicio = null;//null para poder crear mas arista
                 nodoFin = null;//null para poder crear mas arista
                 caminoRecorrido = null;
