@@ -128,7 +128,7 @@ public class Archivo {
 
     /**
      * DESCRIPCION: METODO PARA OBTENER LA TABLA HASH DEL PROGRAMA
-     * @return 
+     * @return TABLA HASH DE GUARDDA EN MEMORIA
      */
     public TablaHashEncadenamiento getTablaHash() {
         return tablaHash;
